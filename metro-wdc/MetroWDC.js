@@ -23,7 +23,7 @@
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "PassengerDelay",
-            dataType: tableau.dataTypeEnum.float
+            dataType: tableau.dataTypeEnum.string
         }, {
             id: "DelaySeverity",
             dataType: tableau.dataTypeEnum.string
@@ -65,7 +65,7 @@
 
     // Download the data
     myConnector.getData = function(table, doneCallback) {
-        $.ajax(settings).done(function (response) {console.log(response);}, function(resp) {
+        $.ajax(settings).done(function(resp) {
                var tableData = [];
 
             // Iterate over the JSON object
