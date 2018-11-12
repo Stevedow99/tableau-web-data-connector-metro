@@ -51,17 +51,21 @@
     };
 
 
-            $.ajaxSetup({
-          headers : {   
-            "api_key": "29fb2c42b2e54ffe9226628a3010b4f3",
-            "cache-control": "no-cache",
-            "Postman-Token": "074f4ea7-9fd7-40d2-b97d-da6f8abb489f"
-          }
-        });
+            var settings = {
+              "async": true,
+              "crossDomain": true,
+              "url": "https://api.wmata.com/Incidents.svc/json/Incidents",
+              "method": "GET",
+              "headers": {
+                "api_key": "29fb2c42b2e54ffe9226628a3010b4f3",
+                "cache-control": "no-cache",
+                "Postman-Token": "6844e148-70e6-480d-a35d-a7a13cea42a4"
+              }
+            }
 
     // Download the data
     myConnector.getData = function(table, doneCallback) {
-        $.getJSON("https://api.wmata.com/Incidents.svc/json/Incidents", function(resp) {
+        $.ajax(settings).done(function (response) {console.log(response);}, function(resp) {
                var tableData = [];
 
             // Iterate over the JSON object
