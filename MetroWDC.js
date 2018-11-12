@@ -31,7 +31,7 @@
 
     // Download the data
     myConnector.getData = function(table, doneCallback) {
-        $.getJSON("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson", function(resp) {
+        $.getJSON("https://api.wmata.com/Incidents.svc/json/Incidents HTTP/1.1", function(resp) {
             var feat = resp.features,
                 tableData = [];
 
