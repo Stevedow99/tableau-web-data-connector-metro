@@ -34,7 +34,11 @@
     };
 
 
-            var settings = {
+
+
+    // Download the data
+    myConnector.getData = function(table, doneCallback) {
+        $.ajax({
               "async": true,
               "crossDomain": true,
               "url": "https://api.wmata.com/Incidents.svc/json/BusIncidents",
@@ -42,22 +46,18 @@
               "headers": {
                 "api_key": "29fb2c42b2e54ffe9226628a3010b4f3"
               }
-            };
-
-    // Download the data
-    myConnector.getData = function(table, doneCallback) {
-        $.ajax(settings).done(function(response) {
+            }).done(function(response) {
             console.log(response)
-               var tableData = [];
+               var tableData = [["1","2","3","4","5"]];
 
             // Iterate over the JSON object
-            for (var i = 0, len = response.length; i < len; i++) {
+            {
                 tableData.push({
-                    "DateUpdated": response[i].DateUpdated,
-                    "Description": response[i].Description,
-                    "IncidentID": response[i].IncidentID,
-                    "IncidentType": response[i].IncidentType,
-                    "RoutesAffected": resp[i].RoutesAffected
+                    "DateUpdated": response.DateUpdated,
+                    "Description": response.Description,
+                    "IncidentID": response.IncidentID,
+                    "IncidentType": response.IncidentType,
+                    "RoutesAffected": response.RoutesAffected
                 });
             }
 
