@@ -21,6 +21,7 @@
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "RoutesAffected",
+            alias: "Routes Affected",
             dataType: tableau.dataTypeEnum.string
         }];
 
@@ -46,23 +47,32 @@
               "headers": {
                 "api_key": "29fb2c42b2e54ffe9226628a3010b4f3"
               }
-            }).done(function(response) {
+            }).done(function(response){
+                jsondata = response
             console.log(response)
-               var tableData = [["1","2","3","4","5"]];
+               var tableData = [];
+
+          
 
             // Iterate over the JSON object
-            {
-                tableData.push({
-                    "DateUpdated": response.DateUpdated,
-                    "Description": response.Description,
-                    "IncidentID": response.IncidentID,
-                    "IncidentType": response.IncidentType,
-                    "RoutesAffected": response.RoutesAffected
+             for (var i = 0, len = response.BusIncidents.length; i < len; i++) 
+             
+             {
+               tableData.push({
+                    "DateUpdated": response.BusIncidents[i].DateUpdated,
+                    "Description": response.BusIncidents[i].Description,
+                    "IncidentID": response.BusIncidents[i].IncidentID,
+                    "IncidentType": response.BusIncidents[i].IncidentType,
+                    "RoutesAffected": response.BusIncidents[i].RoutesAffected
                 });
             }
 
+
+
             table.appendRows(tableData);
             doneCallback();
+
+
         });
     };
 
@@ -73,6 +83,9 @@
         $("#submitButton").click(function() {
             tableau.connectionName = "WMTA Bus Incidents"; // This will be the data source name in Tableau
             tableau.submit(); // This sends the connector object to Tableau
+
         });
     });
 })();
+
+
