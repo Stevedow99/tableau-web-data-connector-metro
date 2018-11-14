@@ -41,7 +41,7 @@
 
     myConnector.getData = function (table, doneCallback) {
         
-        const url = 'https://api.wmata.com/Incidents.svc/json/BusIncidents'
+        const url = 'https://cors-anywhere.herokuapp.com/https://api.wmata.com/Incidents.svc/json/BusIncidents'
         
 
 
