@@ -61,6 +61,8 @@
                 const timeSeries = data['BusIncidents']
                 const keys = Object.keys(timeSeries)
                 for (var i = 0 ; i < keys.length ; i++) {
+                    var stringRA = data.BusIncidents[i].RoutesAffected
+                    var stringRA2 = stringRA.toString();
                     const key = keys[i]
                     const actual = timeSeries[key]
                     const expected = {}
@@ -68,12 +70,13 @@
                     expected.Description = actual['Description']
                     expected.IncidentID = actual['IncidentID']
                     expected.IncidentType = actual['IncidentType']
-                    expected.RoutesAffected = actual['RoutesAffected']
+                    expected.RoutesAffected = stringRA2
                     allRows.push(expected)
                     }
                     
                 table.appendRows(allRows)
                 doneCallback();
+
             }
         });
     };
