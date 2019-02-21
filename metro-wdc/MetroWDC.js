@@ -52,7 +52,7 @@
             url: url,
             data: {},
             headers: {
-                "api_key": "29fb2c42b2e54ffe9226628a3010b4f3",
+                "api_key": "This is your API KEY",
                 "Access-Control-Allow-Origin": "*"
                      },
 
