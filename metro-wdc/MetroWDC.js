@@ -52,7 +52,7 @@
             url: url,
             data: {},
             headers: {
-                "api_key": "This is your API KEY",
+                "api_key": tableau.connectionData,
                 "Access-Control-Allow-Origin": "*"
                      },
 
@@ -83,8 +83,8 @@
 
     tableau.registerConnector(myConnector);
 
-        $("#submitButton").click(function () {
-    
+      $("#submitButton").click(function () {
+            tableau.connectionData = $("#MetroAPIKey").val();    
   
             tableau.connectionName = "WMTA Bus Incidents";
             tableau.submit();
